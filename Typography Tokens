@@ -1,0 +1,632 @@
+//Typography
+
+//IOS
+
+import UIKit
+
+/// ARKO Design System - Typography Tokens
+/// A utility class to provide consistent typography across the app
+public class ARKOTypography {
+    
+    // MARK: - TT Commons Pro Trial Tokens
+    public struct TTCommonsPro {
+        public static let typography1: CGFloat = 18.0
+        public static let typography2: CGFloat = 33.35
+        public static let typography3: CGFloat = 40.0
+        public static let typography4: CGFloat = 60.0
+        public static let typography5: CGFloat = 66.0
+        public static let typography6: CGFloat = 70.0
+        public static let typography7: CGFloat = 90.0
+        public static let typography8: CGFloat = 96.0
+        public static let typography9: CGFloat = 111.31
+        public static let typography10: CGFloat = 112.0
+        public static let typography11: CGFloat = 130.0
+        public static let typography12: CGFloat = 152.0
+        public static let typography13: CGFloat = 152.0
+    }
+    
+    // MARK: - Rival Sans Tokens
+    public struct RivalSans {
+        public static let typography1: CGFloat = 12.0
+        public static let typography2: CGFloat = 12.0
+        public static let typography3: CGFloat = 21.0
+        public static let typography4: CGFloat = 22.0
+        public static let typography5: CGFloat = 22.0
+        public static let typography6: CGFloat = 24.92
+        public static let typography7: CGFloat = 26.69
+        public static let typography8: CGFloat = 28.0
+        public static let typography9: CGFloat = 30.0
+        public static let typography10: CGFloat = 40.0
+        public static let typography11: CGFloat = 77.01
+    }
+    
+    // MARK: - Helper methods
+    
+    /// Get a UIFont for TT Commons Pro Trial with specified size
+    public static func ttCommonsProFont(ofSize fontSize: CGFloat, weight: UIFont.Weight = .regular) -> UIFont {
+        // In production app, you would use the actual font name and handle fallbacks
+        return UIFont.systemFont(ofSize: fontSize, weight: weight)
+    }
+    
+    /// Get a UIFont for Rival Sans with specified size
+    public static func rivalSansFont(ofSize fontSize: CGFloat, weight: UIFont.Weight = .regular) -> UIFont {
+        // In production app, you would use the actual font name and handle fallbacks
+        return UIFont.systemFont(ofSize: fontSize, weight: weight)
+    }
+}
+
+//Andriod
+
+package com.arko.design
+
+import android.content.Context
+import android.util.TypedValue
+
+/**
+ * ARKO Design System - Typography Tokens for Android
+ * Provides consistent typography values across the app
+ */
+object ARKOTypography {
+    
+    // TT Commons Pro Trial Tokens
+    object TTCommonsPro {
+        const val TYPOGRAPHY_1 = 18f
+        const val TYPOGRAPHY_2 = 33.35f
+        const val TYPOGRAPHY_3 = 40f
+        const val TYPOGRAPHY_4 = 60f
+        const val TYPOGRAPHY_5 = 66f
+        const val TYPOGRAPHY_6 = 70f
+        const val TYPOGRAPHY_7 = 90f
+        const val TYPOGRAPHY_8 = 96f
+        const val TYPOGRAPHY_9 = 111.31f
+        const val TYPOGRAPHY_10 = 112f
+        const val TYPOGRAPHY_11 = 130f
+        const val TYPOGRAPHY_12 = 152f
+        const val TYPOGRAPHY_13 = 152f
+    }
+    
+    // Rival Sans Tokens
+    object RivalSans {
+        const val TYPOGRAPHY_1 = 12f
+        const val TYPOGRAPHY_2 = 12f
+        const val TYPOGRAPHY_3 = 21f
+        const val TYPOGRAPHY_4 = 22f
+        const val TYPOGRAPHY_5 = 22f
+        const val TYPOGRAPHY_6 = 24.92f
+        const val TYPOGRAPHY_7 = 26.69f
+        const val TYPOGRAPHY_8 = 28f
+        const val TYPOGRAPHY_9 = 30f
+        const val TYPOGRAPHY_10 = 40f
+        const val TYPOGRAPHY_11 = 77.01f
+    }
+    
+    /**
+     * Converts SP value to pixels
+     */
+    fun spToPx(context: Context, sp: Float): Float {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_SP,
+            sp,
+            context.resources.displayMetrics
+        )
+    }
+    
+    /**
+     * Creates dimens resource XML content for typography tokens
+     */
+    fun generateDimensResourceXml(): String {
+        val sb = StringBuilder()
+        sb.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")
+        sb.append("<resources>\n")
+        sb.append("    <!-- TT Commons Pro Trial Typography -->\n")
+        sb.append("    <dimen name=\"ttcommons_typography_1\">${TTCommonsPro.TYPOGRAPHY_1}sp</dimen>\n")
+        sb.append("    <dimen name=\"ttcommons_typography_2\">${TTCommonsPro.TYPOGRAPHY_2}sp</dimen>\n")
+        sb.append("    <dimen name=\"ttcommons_typography_3\">${TTCommonsPro.TYPOGRAPHY_3}sp</dimen>\n")
+        sb.append("    <dimen name=\"ttcommons_typography_4\">${TTCommonsPro.TYPOGRAPHY_4}sp</dimen>\n")
+        sb.append("    <dimen name=\"ttcommons_typography_5\">${TTCommonsPro.TYPOGRAPHY_5}sp</dimen>\n")
+        sb.append("    <dimen name=\"ttcommons_typography_6\">${TTCommonsPro.TYPOGRAPHY_6}sp</dimen>\n")
+        sb.append("    <dimen name=\"ttcommons_typography_7\">${TTCommonsPro.TYPOGRAPHY_7}sp</dimen>\n")
+        sb.append("    <dimen name=\"ttcommons_typography_8\">${TTCommonsPro.TYPOGRAPHY_8}sp</dimen>\n")
+        sb.append("    <dimen name=\"ttcommons_typography_9\">${TTCommonsPro.TYPOGRAPHY_9}sp</dimen>\n")
+        sb.append("    <dimen name=\"ttcommons_typography_10\">${TTCommonsPro.TYPOGRAPHY_10}sp</dimen>\n")
+        sb.append("    <dimen name=\"ttcommons_typography_11\">${TTCommonsPro.TYPOGRAPHY_11}sp</dimen>\n")
+        sb.append("    <dimen name=\"ttcommons_typography_12\">${TTCommonsPro.TYPOGRAPHY_12}sp</dimen>\n")
+        sb.append("    <dimen name=\"ttcommons_typography_13\">${TTCommonsPro.TYPOGRAPHY_13}sp</dimen>\n\n")
+        sb.append("    <!-- Rival Sans Typography -->\n")
+        sb.append("    <dimen name=\"rivalsans_typography_1\">${RivalSans.TYPOGRAPHY_1}sp</dimen>\n")
+        sb.append("    <dimen name=\"rivalsans_typography_2\">${RivalSans.TYPOGRAPHY_2}sp</dimen>\n")
+        sb.append("    <dimen name=\"rivalsans_typography_3\">${RivalSans.TYPOGRAPHY_3}sp</dimen>\n")
+        sb.append("    <dimen name=\"rivalsans_typography_4\">${RivalSans.TYPOGRAPHY_4}sp</dimen>\n")
+        sb.append("    <dimen name=\"rivalsans_typography_5\">${RivalSans.TYPOGRAPHY_5}sp</dimen>\n")
+        sb.append("    <dimen name=\"rivalsans_typography_6\">${RivalSans.TYPOGRAPHY_6}sp</dimen>\n")
+        sb.append("    <dimen name=\"rivalsans_typography_7\">${RivalSans.TYPOGRAPHY_7}sp</dimen>\n")
+        sb.append("    <dimen name=\"rivalsans_typography_8\">${RivalSans.TYPOGRAPHY_8}sp</dimen>\n")
+        sb.append("    <dimen name=\"rivalsans_typography_9\">${RivalSans.TYPOGRAPHY_9}sp</dimen>\n")
+        sb.append("    <dimen name=\"rivalsans_typography_10\">${RivalSans.TYPOGRAPHY_10}sp</dimen>\n")
+        sb.append("    <dimen name=\"rivalsans_typography_11\">${RivalSans.TYPOGRAPHY_11}sp</dimen>\n")
+        sb.append("</resources>")
+        
+        return sb.toString()
+    }
+}
+
+Web CSS
+
+/**
+ * ARKO Design System - Typography Tokens
+ * Global typographic styles for consistent font rendering across the application
+ */
+
+:root {
+  /* TT Commons Pro Trial Typography Tokens */
+  --ttcommons-typography-1: 18px;
+  --ttcommons-typography-2: 33.35px;
+  --ttcommons-typography-3: 40px;
+  --ttcommons-typography-4: 60px;
+  --ttcommons-typography-5: 66px;
+  --ttcommons-typography-6: 70px;
+  --ttcommons-typography-7: 90px;
+  --ttcommons-typography-8: 96px;
+  --ttcommons-typography-9: 111.31px;
+  --ttcommons-typography-10: 112px;
+  --ttcommons-typography-11: 130px;
+  --ttcommons-typography-12: 152px;
+  --ttcommons-typography-13: 152px;
+
+  /* Rival Sans Typography Tokens */
+  --rivalsans-typography-1: 12px;
+  --rivalsans-typography-2: 12px;
+  --rivalsans-typography-3: 21px;
+  --rivalsans-typography-4: 22px;
+  --rivalsans-typography-5: 22px;
+  --rivalsans-typography-6: 24.92px;
+  --rivalsans-typography-7: 26.69px;
+  --rivalsans-typography-8: 28px;
+  --rivalsans-typography-9: 30px;
+  --rivalsans-typography-10: 40px;
+  --rivalsans-typography-11: 77.01px;
+  
+  /* Font Family Definitions */
+  --font-ttcommons: 'TT Commons Pro Trial', sans-serif;
+  --font-rivalsans: 'Rival Sans', sans-serif;
+}
+
+/* Utility classes for TT Commons Pro Trial */
+.ttcommons-1 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-1);
+}
+
+.ttcommons-2 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-2);
+}
+
+.ttcommons-3 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-3);
+}
+
+.ttcommons-4 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-4);
+}
+
+.ttcommons-5 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-5);
+}
+
+.ttcommons-6 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-6);
+}
+
+.ttcommons-7 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-7);
+}
+
+.ttcommons-8 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-8);
+}
+
+.ttcommons-9 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-9);
+}
+
+.ttcommons-10 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-10);
+}
+
+.ttcommons-11 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-11);
+}
+
+.ttcommons-12 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-12);
+}
+
+.ttcommons-13 {
+  font-family: var(--font-ttcommons);
+  font-size: var(--ttcommons-typography-13);
+}
+
+/* Utility classes for Rival Sans */
+.rivalsans-1 {
+  font-family: var(--font-rivalsans);
+  font-size: var(--rivalsans-typography-1);
+}
+
+.rivalsans-2 {
+  font-family: var(--font-rivalsans);
+  font-size: var(--rivalsans-typography-2);
+}
+
+.rivalsans-3 {
+  font-family: var(--font-rivalsans);
+  font-size: var(--rivalsans-typography-3);
+}
+
+.rivalsans-4 {
+  font-family: var(--font-rivalsans);
+  font-size: var(--rivalsans-typography-4);
+}
+
+.rivalsans-5 {
+  font-family: var(--font-rivalsans);
+  font-size: var(--rivalsans-typography-5);
+}
+
+.rivalsans-6 {
+  font-family: var(--font-rivalsans);
+  font-size: var(--rivalsans-typography-6);
+}
+
+.rivalsans-7 {
+  font-family: var(--font-rivalsans);
+  font-size: var(--rivalsans-typography-7);
+}
+
+.rivalsans-8 {
+  font-family: var(--font-rivalsans);
+  font-size: var(--rivalsans-typography-8);
+}
+
+.rivalsans-9 {
+  font-family: var(--font-rivalsans);
+  font-size: var(--rivalsans-typography-9);
+}
+
+.rivalsans-10 {
+  font-family: var(--font-rivalsans);
+  font-size: var(--rivalsans-typography-10);
+}
+
+.rivalsans-11 {
+  font-family: var(--font-rivalsans);
+  font-size: var(--rivalsans-typography-11);
+}
+
+/* Responsive adjustments could be defined here */
+@media (max-width: 768px) {
+  /* Mobile adjustments */
+}
+
+Java Script
+
+/**
+ * ARKO Design System Tokens
+ * JavaScript implementation of typography tokens for web applications
+ */
+
+const ARKODesignTokens = {
+  // TT Commons Pro Trial Typography Tokens
+  ttCommonsPro: {
+    typography1: '18px',
+    typography2: '33.35px',
+    typography3: '40px',
+    typography4: '60px',
+    typography5: '66px',
+    typography6: '70px',
+    typography7: '90px',
+    typography8: '96px',
+    typography9: '111.31px',
+    typography10: '112px',
+    typography11: '130px',
+    typography12: '152px',
+    typography13: '152px',
+  },
+  
+  // Rival Sans Typography Tokens
+  rivalSans: {
+    typography1: '12px',
+    typography2: '12px',
+    typography3: '21px',
+    typography4: '22px',
+    typography5: '22px',
+    typography6: '24.92px',
+    typography7: '26.69px',
+    typography8: '28px',
+    typography9: '30px',
+    typography10: '40px',
+    typography11: '77.01px',
+  },
+  
+  // Font Family Definitions
+  fontFamilies: {
+    ttCommonsPro: "'TT Commons Pro Trial', sans-serif",
+    rivalSans: "'Rival Sans', sans-serif",
+  },
+  
+  // Helper methods
+  applyTypography: (element, fontFamily, typographySize) => {
+    if (!element) return;
+    
+    let fontFamilyValue;
+    let sizeValue;
+    
+    // Determine font family
+    if (fontFamily === 'ttCommonsPro') {
+      fontFamilyValue = ARKODesignTokens.fontFamilies.ttCommonsPro;
+      sizeValue = ARKODesignTokens.ttCommonsPro[`typography${typographySize}`];
+    } else if (fontFamily === 'rivalSans') {
+      fontFamilyValue = ARKODesignTokens.fontFamilies.rivalSans;
+      sizeValue = ARKODesignTokens.rivalSans[`typography${typographySize}`];
+    } else {
+      console.error('Invalid font family specified');
+      return;
+    }
+    
+    // Apply styles
+    element.style.fontFamily = fontFamilyValue;
+    element.style.fontSize = sizeValue;
+  },
+  
+  // Generate CSS variables from tokens
+  generateCSSVariables: () => {
+    let cssVars = ':root {\n';
+    
+    // TT Commons Pro variables
+    Object.entries(ARKODesignTokens.ttCommonsPro).forEach(([key, value]) => {
+      cssVars += `  --ttcommons-${key}: ${value};\n`;
+    });
+    
+    // Rival Sans variables
+    Object.entries(ARKODesignTokens.rivalSans).forEach(([key, value]) => {
+      cssVars += `  --rivalsans-${key}: ${value};\n`;
+    });
+    
+    // Font families
+    Object.entries(ARKODesignTokens.fontFamilies).forEach(([key, value]) => {
+      cssVars += `  --font-${key.toLowerCase()}: ${value};\n`;
+    });
+    
+    cssVars += '}';
+    
+    return cssVars;
+  },
+  
+  // Apply tokens to the document
+  applyTokensToDocument: () => {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = ARKODesignTokens.generateCSSVariables();
+    document.head.appendChild(styleElement);
+    console.log('ARKO Design Tokens applied to document');
+  }
+};
+
+// Export for module systems
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = ARKODesignTokens;
+} else {
+  window.ARKODesignTokens = ARKODesignTokens;
+}
+
+HTML Interactive Artifact
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARKO Design System - Typography Demo</title>
+  <style>
+    /* ARKO Typography Tokens */
+    :root {
+      /* TT Commons Pro Trial Typography Tokens */
+      --ttcommons-typography-1: 18px;
+      --ttcommons-typography-2: 33.35px;
+      --ttcommons-typography-3: 40px;
+      --ttcommons-typography-4: 60px;
+      --ttcommons-typography-5: 66px;
+      --ttcommons-typography-6: 70px;
+      --ttcommons-typography-7: 90px;
+      --ttcommons-typography-8: 96px;
+      --ttcommons-typography-9: 111.31px;
+      --ttcommons-typography-10: 112px;
+      --ttcommons-typography-11: 130px;
+      --ttcommons-typography-12: 152px;
+      --ttcommons-typography-13: 152px;
+
+      /* Rival Sans Typography Tokens */
+      --rivalsans-typography-1: 12px;
+      --rivalsans-typography-2: 12px;
+      --rivalsans-typography-3: 21px;
+      --rivalsans-typography-4: 22px;
+      --rivalsans-typography-5: 22px;
+      --rivalsans-typography-6: 24.92px;
+      --rivalsans-typography-7: 26.69px;
+      --rivalsans-typography-8: 28px;
+      --rivalsans-typography-9: 30px;
+      --rivalsans-typography-10: 40px;
+      --rivalsans-typography-11: 77.01px;
+      
+      /* Font Family Definitions */
+      --font-ttcommons: 'TT Commons Pro Trial', sans-serif;
+      --font-rivalsans: 'Rival Sans', sans-serif;
+    }
+
+    /* For demo purposes - applying fonts */
+    @font-face {
+      font-family: 'TT Commons Pro Trial';
+      src: url('path/to/ttcommonspro.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Rival Sans';
+      src: url('path/to/rivalsans.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .typography-section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+    }
+
+    .sample {
+      margin-bottom: 20px;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .ttcommons {
+      font-family: var(--font-ttcommons);
+    }
+
+    .rivalsans {
+      font-family: var(--font-rivalsans);
+    }
+
+    /* Utility classes for demo */
+    .label {
+      font-size: 12px;
+      color: #666;
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    .size-value {
+      font-size: 12px;
+      color: #0066cc;
+      display: block;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ARKO Design System - Typography Demo</h1>
+    
+    <div class="typography-section">
+      <h2>TT Commons Pro Trial</h2>
+      
+      <div class="sample">
+        <span class="label">Typography 1</span>
+        <div class="ttcommons" style="font-size: var(--ttcommons-typography-1);">
+          ARKO Design System Typography Sample
+        </div>
+        <span class="size-value">Size: 18px</span>
+      </div>
+      
+      <div class="sample">
+        <span class="label">Typography 2</span>
+        <div class="ttcommons" style="font-size: var(--ttcommons-typography-2);">
+          ARKO Design System Typography Sample
+        </div>
+        <span class="size-value">Size: 33.35px</span>
+      </div>
+      
+      <div class="sample">
+        <span class="label">Typography 3</span>
+        <div class="ttcommons" style="font-size: var(--ttcommons-typography-3);">
+          ARKO Design System Typography Sample
+        </div>
+        <span class="size-value">Size: 40px</span>
+      </div>
+      
+      <div class="sample">
+        <span class="label">Typography 4</span>
+        <div class="ttcommons" style="font-size: var(--ttcommons-typography-4);">
+          ARKO Design System
+        </div>
+        <span class="size-value">Size: 60px</span>
+      </div>
+    </div>
+    
+    <div class="typography-section">
+      <h2>Rival Sans</h2>
+      
+      <div class="sample">
+        <span class="label">Typography 1</span>
+        <div class="rivalsans" style="font-size: var(--rivalsans-typography-1);">
+          ARKO Design System Typography Sample
+        </div>
+        <span class="size-value">Size: 12px</span>
+      </div>
+      
+      <div class="sample">
+        <span class="label">Typography 3</span>
+        <div class="rivalsans" style="font-size: var(--rivalsans-typography-3);">
+          ARKO Design System Typography Sample
+        </div>
+        <span class="size-value">Size: 21px</span>
+      </div>
+      
+      <div class="sample">
+        <span class="label">Typography 8</span>
+        <div class="rivalsans" style="font-size: var(--rivalsans-typography-8);">
+          ARKO Design System Typography Sample
+        </div>
+        <span class="size-value">Size: 28px</span>
+      </div>
+      
+      <div class="sample">
+        <span class="label">Typography 11</span>
+        <div class="rivalsans" style="font-size: var(--rivalsans-typography-11);">
+          ARKO Design
+        </div>
+        <span class="size-value">Size: 77.01px</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript usage example
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('ARKO Design System Typography Demo Loaded');
+      
+      // Example of applying typography programmatically
+      const dynamicElement = document.createElement('div');
+      dynamicElement.textContent = 'Dynamically Applied Typography';
+      dynamicElement.style.fontFamily = 'var(--font-ttcommons)';
+      dynamicElement.style.fontSize = 'var(--ttcommons-typography-5)';
+      
+      document.querySelector('.container').appendChild(dynamicElement);
+    });
+  </script>
+</body>
+</html>

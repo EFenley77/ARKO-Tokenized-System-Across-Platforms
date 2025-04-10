@@ -1,0 +1,345 @@
+**Radius**
+
+# Border Radius Implementation Across Platforms
+
+## iOS (Swift/SwiftUI)
+
+### UIKit
+```swift
+// #none (0px)
+let noneView = UIView()
+noneView.layer.cornerRadius = 0
+
+// #box (25px)
+let boxView = UIView()
+boxView.layer.cornerRadius = 25
+
+// #button (25px)
+let buttonView = UIButton()
+buttonView.layer.cornerRadius = 25
+```
+
+### SwiftUI
+```swift
+// #none (0px)
+Rectangle()
+    .cornerRadius(0)
+    .frame(width: 150, height: 150)
+    .background(Color(UIColor.systemPurple.withAlphaComponent(0.2)))
+
+// #box (25px)
+Rectangle()
+    .cornerRadius(25)
+    .frame(width: 150, height: 150)
+    .background(Color(UIColor.systemPurple.withAlphaComponent(0.2)))
+
+// #button (25px)
+Button(action: {}) {
+    Text("Button")
+        .frame(width: 150, height: 150)
+}
+.background(Color(UIColor.systemPurple.withAlphaComponent(0.2)))
+.cornerRadius(25)
+```
+
+## Android
+
+### XML
+```xml
+<!-- styles.xml -->
+<resources>
+    <!-- #none (0dp) -->
+    <style name="RadiusNone">
+        <item name="android:cornerRadius">0dp</item>
+    </style>
+    
+    <!-- #box (25dp) -->
+    <style name="RadiusBox">
+        <item name="android:cornerRadius">25dp</item>
+    </style>
+    
+    <!-- #button (25dp) -->
+    <style name="RadiusButton">
+        <item name="android:cornerRadius">25dp</item>
+    </style>
+</resources>
+
+<!-- drawable/radius_none_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="0dp" />
+    <solid android:color="#E6E6FA" />
+</shape>
+
+<!-- drawable/radius_box_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="25dp" />
+    <solid android:color="#E6E6FA" />
+</shape>
+
+<!-- drawable/radius_button_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="25dp" />
+    <solid android:color="#E6E6FA" />
+</shape>
+```
+
+### Kotlin
+```kotlin
+// Programmatic approach
+// #none (0dp)
+val noneView = View(context)
+noneView.background = GradientDrawable().apply {
+    setColor(Color.parseColor("#E6E6FA"))
+    cornerRadius = 0f
+}
+
+// #box (25dp)
+val boxView = View(context)
+boxView.background = GradientDrawable().apply {
+    setColor(Color.parseColor("#E6E6FA"))
+    cornerRadius = 25 * resources.displayMetrics.density
+}
+
+// #button (25dp)
+val button = Button(context)
+button.background = GradientDrawable().apply {
+    setColor(Color.parseColor("#E6E6FA"))
+    cornerRadius = 25 * resources.displayMetrics.density
+}
+```
+
+### Jetpack Compose
+```kotlin
+// #none (0dp)
+Box(
+    modifier = Modifier
+        .size(150.dp)
+        .background(
+            color = Color(0xFFE6E6FA),
+            shape = RoundedCornerShape(0.dp)
+        )
+)
+
+// #box (25dp)
+Box(
+    modifier = Modifier
+        .size(150.dp)
+        .background(
+            color = Color(0xFFE6E6FA),
+            shape = RoundedCornerShape(25.dp)
+        )
+)
+
+// #button (25dp)
+Button(
+    onClick = { /* Action */ },
+    modifier = Modifier.size(150.dp),
+    shape = RoundedCornerShape(25.dp),
+    colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFE6E6FA))
+) {
+    Text("Button")
+}
+```
+
+## HTML/CSS
+
+### CSS Classes
+```css
+/* Design tokens */
+:root {
+  --radius-none: 0px;
+  --radius-box: 25px;
+  --radius-button: 25px;
+  --color-background: #E6E6FA;
+}
+
+/* Components */
+.radius-none {
+  width: 150px;
+  height: 150px;
+  background-color: var(--color-background);
+  border-radius: var(--radius-none);
+}
+
+.radius-box {
+  width: 150px;
+  height: 150px;
+  background-color: var(--color-background);
+  border-radius: var(--radius-box);
+}
+
+.radius-button {
+  width: 150px;
+  height: 150px;
+  background-color: var(--color-background);
+  border-radius: var(--radius-button);
+}
+```
+
+### HTML Implementation
+```html
+<div class="container">
+  <div class="card">
+    <div class="radius-none"></div>
+    <p>#none</p>
+    <p>0</p>
+  </div>
+  
+  <div class="card">
+    <div class="radius-box"></div>
+    <p>#box</p>
+    <p>25</p>
+  </div>
+  
+  <div class="card">
+    <div class="radius-button"></div>
+    <p>#button</p>
+    <p>25</p>
+  </div>
+</div>
+```
+
+## Web Frameworks
+
+### React with Styled Components
+```jsx
+// Design tokens
+const theme = {
+  radius: {
+    none: '0px',
+    box: '25px',
+    button: '25px'
+  },
+  colors: {
+    background: '#E6E6FA'
+  }
+};
+
+// Styled components
+const Box = styled.div`
+  width: 150px;
+  height: 150px;
+  background-color: ${props => props.theme.colors.background};
+  border-radius: ${props => props.theme.radius[props.variant]};
+`;
+
+// Usage
+function DesignSystem() {
+  return (
+    <ThemeProvider theme={theme}>
+      <Box variant="none" />
+      <Box variant="box" />
+      <Box variant="button" />
+    </ThemeProvider>
+  );
+}
+```
+
+### React with Tailwind CSS
+```jsx
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      borderRadius: {
+        'none': '0px',
+        'box': '25px',
+        'button': '25px',
+      },
+      backgroundColor: {
+        'purple-light': '#E6E6FA',
+      },
+    },
+  },
+};
+
+// Component usage
+function DesignSystem() {
+  return (
+    <div className="flex gap-4">
+      <div>
+        <div className="w-36 h-36 bg-purple-light rounded-none"></div>
+        <p className="text-center">#none</p>
+        <p className="text-center">0</p>
+      </div>
+      
+      <div>
+        <div className="w-36 h-36 bg-purple-light rounded-box"></div>
+        <p className="text-center">#box</p>
+        <p className="text-center">25</p>
+      </div>
+      
+      <div>
+        <div className="w-36 h-36 bg-purple-light rounded-button"></div>
+        <p className="text-center">#button</p>
+        <p className="text-center">25</p>
+      </div>
+    </div>
+  );
+}
+```
+
+### Flutter (Bonus)
+```dart
+// Design tokens
+class RadiusTokens {
+  static const double none = 0;
+  static const double box = 25;
+  static const double button = 25;
+}
+
+// Implementation
+Widget build(BuildContext context) {
+  return Row(
+    children: [
+      // #none
+      Column(
+        children: [
+          Container(
+            width: 150,
+            height: 150,
+            decoration: BoxDecoration(
+              color: Color(0xFFE6E6FA),
+              borderRadius: BorderRadius.circular(RadiusTokens.none),
+            ),
+          ),
+          Text("#none"),
+          Text("0"),
+        ],
+      ),
+      
+      // #box
+      Column(
+        children: [
+          Container(
+            width: 150,
+            height: 150,
+            decoration: BoxDecoration(
+              color: Color(0xFFE6E6FA),
+              borderRadius: BorderRadius.circular(RadiusTokens.box),
+            ),
+          ),
+          Text("#box"),
+          Text("25"),
+        ],
+      ),
+      
+      // #button
+      Column(
+        children: [
+          Container(
+            width: 150,
+            height: 150,
+            decoration: BoxDecoration(
+              color: Color(0xFFE6E6FA),
+              borderRadius: BorderRadius.circular(RadiusTokens.button),
+            ),
+          ),
+          Text("#button"),
+          Text("25"),
+        ],
+      ),
+    ],
+  );
+}
+```

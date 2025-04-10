@@ -1,6 +1,6 @@
-//Typography
+**Typography**
 
-//IOS
+**IOS**
 
 import UIKit
 
@@ -55,7 +55,7 @@ public class ARKOTypography {
     }
 }
 
-//Andriod
+**Andriod**
 
 package com.arko.design
 
@@ -150,7 +150,7 @@ object ARKOTypography {
     }
 }
 
-Web CSS
+**Web CSS**
 
 /**
  * ARKO Design System - Typography Tokens
@@ -318,7 +318,7 @@ Web CSS
   /* Mobile adjustments */
 }
 
-Java Script
+**Java Script**
 
 /**
  * ARKO Design System Tokens
@@ -428,7 +428,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   window.ARKODesignTokens = ARKODesignTokens;
 }
 
-HTML Interactive Artifact
+**HTML Interactive Artifact**
 
 <!DOCTYPE html>
 <html lang="en">

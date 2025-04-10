@@ -1,0 +1,594 @@
+**Color Tokens**
+
+**IOS**
+
+import UIKit
+
+/// ARKO Design System - Color Tokens
+/// A utility class to provide consistent colors across the app
+public class ARKOColors {
+    
+    // MARK: - Primary Colors
+    public struct Primary {
+        /// Kamitsubata Droplet - #3B5998
+        public static let kamitsubataDroplet = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1.0)
+        
+        /// Adora - #8974A3
+        public static let adora = UIColor(red: 137/255, green: 116/255, blue: 163/255, alpha: 1.0)
+    }
+    
+    // MARK: - Grizzly Red
+    public struct GrizzlyRed {
+        /// Grizzly Red 100 - #BE8383
+        public static let shade100 = UIColor(red: 190/255, green: 131/255, blue: 131/255, alpha: 1.0)
+        
+        /// Grizzly Red 200 - #9F5E5E
+        public static let shade200 = UIColor(red: 159/255, green: 94/255, blue: 94/255, alpha: 1.0)
+        
+        /// Grizzly Red 300 - #7F3434
+        public static let shade300 = UIColor(red: 127/255, green: 52/255, blue: 52/255, alpha: 1.0)
+        
+        /// Grizzly Red 400 - #5F2424
+        public static let shade400 = UIColor(red: 95/255, green: 36/255, blue: 36/255, alpha: 1.0)
+    }
+    
+    // MARK: - Crème Feathers
+    public struct CremeFeathers {
+        /// Crème Feathers 100 - #FFFDE0
+        public static let shade100 = UIColor(red: 255/255, green: 253/255, blue: 224/255, alpha: 1.0)
+        
+        /// Crème Feathers 200 - #FFFCB8
+        public static let shade200 = UIColor(red: 255/255, green: 252/255, blue: 184/255, alpha: 1.0)
+        
+        /// Crème Feathers 300 - #FFFA8E
+        public static let shade300 = UIColor(red: 255/255, green: 250/255, blue: 142/255, alpha: 1.0)
+        
+        /// Crème Feathers 500 - #FFFD5A
+        public static let shade500 = UIColor(red: 255/255, green: 253/255, blue: 90/255, alpha: 1.0)
+    }
+    
+    // MARK: - Calabrese Pink
+    public struct CalabresePink {
+        /// Calabrese Pink 100 - #FFD6D6
+        public static let shade100 = UIColor(red: 255/255, green: 214/255, blue: 214/255, alpha: 1.0)
+        
+        /// Calabrese Pink 200 - #FFB0B0
+        public static let shade200 = UIColor(red: 255/255, green: 176/255, blue: 176/255, alpha: 1.0)
+        
+        /// Calabrese Pink 300 - #FF8989
+        public static let shade300 = UIColor(red: 255/255, green: 137/255, blue: 137/255, alpha: 1.0)
+        
+        /// Calabrese Pink 500 - #F66363
+        public static let shade500 = UIColor(red: 246/255, green: 99/255, blue: 99/255, alpha: 1.0)
+    }
+    
+    // MARK: - Pale Blue
+    public struct PaleBlue {
+        /// Pale Blue 100 - #D9E1FF
+        public static let shade100 = UIColor(red: 217/255, green: 225/255, blue: 255/255, alpha: 1.0)
+        
+        /// Pale Blue 200 - #B4C4FF
+        public static let shade200 = UIColor(red: 180/255, green: 196/255, blue: 255/255, alpha: 1.0)
+        
+        /// Pale Blue 300 - #8EA8FF
+        public static let shade300 = UIColor(red: 142/255, green: 168/255, blue: 255/255, alpha: 1.0)
+        
+        /// Pale Blue 400 - #6A89FF
+        public static let shade400 = UIColor(red: 106/255, green: 137/255, blue: 255/255, alpha: 1.0)
+    }
+    
+    // MARK: - Neutrals & Accents
+    public struct Neutral {
+        /// Cream - #FFFEE6
+        public static let cream = UIColor(red: 255/255, green: 254/255, blue: 230/255, alpha: 1.0)
+        
+        /// Twilight Blue - #3F3FA7
+        public static let twilightBlue = UIColor(red: 63/255, green: 63/255, blue: 167/255, alpha: 1.0)
+        
+        /// New Color (Green) - #4B6B32
+        public static let green = UIColor(red: 75/255, green: 107/255, blue: 50/255, alpha: 1.0)
+        
+        /// Slate Black - #262423
+        public static let slateBlack = UIColor(red: 38/255, green: 36/255, blue: 35/255, alpha: 1.0)
+    }
+    
+    // MARK: - Semantic Colors
+    public struct Semantic {
+        public static let primary = Primary.kamitsubataDroplet
+        public static let secondary = Primary.adora
+        public static let success = Neutral.green
+        public static let warning = CremeFeathers.shade500
+        public static let error = CalabresePink.shade500
+        public static let info = PaleBlue.shade300
+        public static let dark = Neutral.slateBlack
+    }
+    
+    // MARK: - Dynamic Colors for Dark/Light Mode
+    public static func dynamicColor(light: UIColor, dark: UIColor) -> UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor { traitCollection -> UIColor in
+                return traitCollection.userInterfaceStyle == .dark ? dark : light
+            }
+        } else {
+            return light
+        }
+    }
+    
+    // MARK: - Background Colors
+    public struct Background {
+        public static let primary = dynamicColor(light: UIColor.white, dark: Neutral.slateBlack)
+        public static let secondary = dynamicColor(light: Neutral.cream, dark: UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1.0))
+        public static let tertiary = dynamicColor(light: PaleBlue.shade100, dark: UIColor(red: 44/255, green: 44/255, blue: 46/255, alpha: 1.0))
+    }
+    
+    // MARK: - Text Colors
+    public struct Text {
+        public static let primary = dynamicColor(light: Neutral.slateBlack, dark: UIColor.white)
+        public static let secondary = dynamicColor(light: UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.6), dark: UIColor(red: 235/255, green: 235/255, blue: 245/255, alpha: 0.6))
+        public static let tertiary = dynamicColor(light: UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.3), dark: UIColor(red: 235/255, green: 235/255, blue: 245/255, alpha: 0.3))
+    }
+}
+
+**Andriod**
+
+package com.arko.design
+
+import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
+import androidx.annotation.ColorInt
+import androidx.core.content.ContextCompat
+
+/**
+ * ARKO Design System - Color Tokens for Android
+ */
+object ARKOColors {
+    
+    // Primary Colors
+    object Primary {
+        const val KAMITSUBATA_DROPLET = "#3B5998"
+        const val ADORA = "#8974A3"
+        
+        @ColorInt fun kamitsubataDroplet(): Int = Color.parseColor(KAMITSUBATA_DROPLET)
+        @ColorInt fun adora(): Int = Color.parseColor(ADORA)
+    }
+    
+    // Grizzly Red Colors
+    object GrizzlyRed {
+        const val SHADE_100 = "#BE8383"
+        const val SHADE_200 = "#9F5E5E"
+        const val SHADE_300 = "#7F3434"
+        const val SHADE_400 = "#5F2424"
+        
+        @ColorInt fun shade100(): Int = Color.parseColor(SHADE_100)
+        @ColorInt fun shade200(): Int = Color.parseColor(SHADE_200)
+        @ColorInt fun shade300(): Int = Color.parseColor(SHADE_300)
+        @ColorInt fun shade400(): Int = Color.parseColor(SHADE_400)
+    }
+    
+    // Crème Feathers Colors
+    object CremeFeathers {
+        const val SHADE_100 = "#FFFDE0"
+        const val SHADE_200 = "#FFFCB8"
+        const val SHADE_300 = "#FFFA8E"
+        const val SHADE_500 = "#FFFD5A"
+        
+        @ColorInt fun shade100(): Int = Color.parseColor(SHADE_100)
+        @ColorInt fun shade200(): Int = Color.parseColor(SHADE_200)
+        @ColorInt fun shade300(): Int = Color.parseColor(SHADE_300)
+        @ColorInt fun shade500(): Int = Color.parseColor(SHADE_500)
+    }
+    
+    // Calabrese Pink Colors
+    object CalabresePink {
+        const val SHADE_100 = "#FFD6D6"
+        const val SHADE_200 = "#FFB0B0"
+        const val SHADE_300 = "#FF8989"
+        const val SHADE_500 = "#F66363"
+        
+        @ColorInt fun shade100(): Int = Color.parseColor(SHADE_100)
+        @ColorInt fun shade200(): Int = Color.parseColor(SHADE_200)
+        @ColorInt fun shade300(): Int = Color.parseColor(SHADE_300)
+        @ColorInt fun shade500(): Int = Color.parseColor(SHADE_500)
+    }
+    
+    // Pale Blue Colors
+    object PaleBlue {
+        const val SHADE_100 = "#D9E1FF"
+        const val SHADE_200 = "#B4C4FF"
+        const val SHADE_300 = "#8EA8FF"
+        const val SHADE_400 = "#6A89FF"
+        
+        @ColorInt fun shade100(): Int = Color.parseColor(SHADE_100)
+        @ColorInt fun shade200(): Int = Color.parseColor(SHADE_200)
+        @ColorInt fun shade300(): Int = Color.parseColor(SHADE_300)
+        @ColorInt fun shade400(): Int = Color.parseColor(SHADE_400)
+    }
+    
+    // Neutrals & Accents
+    object Neutral {
+        const val CREAM = "#FFFEE6"
+        const val TWILIGHT_BLUE = "#3F3FA7"
+        const val GREEN = "#4B6B32"
+        const val SLATE_BLACK = "#262423"
+        
+        @ColorInt fun cream(): Int = Color.parseColor(CREAM)
+        @ColorInt fun twilightBlue(): Int = Color.parseColor(TWILIGHT_BLUE)
+        @ColorInt fun green(): Int = Color.parseColor(GREEN)
+        @ColorInt fun slateBlack(): Int = Color.parseColor(SLATE_BLACK)
+    }
+    
+    // Semantic Colors
+    object Semantic {
+        @ColorInt fun primary(): Int = Primary.kamitsubataDroplet()
+        @ColorInt fun secondary(): Int = Primary.adora()
+        @ColorInt fun success(): Int = Neutral.green()
+        @ColorInt fun warning(): Int = CremeFeathers.shade500()
+        @ColorInt fun error(): Int = CalabresePink.shade500()
+        @ColorInt fun info(): Int = PaleBlue.shade300()
+        @ColorInt fun dark(): Int = Neutral.slateBlack()
+    }
+    
+    /**
+     * Generate colors.xml resource content for all color tokens
+     */
+    fun generateColorsResourceXml(): String {
+        val sb = StringBuilder()
+        sb.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")
+        sb.append("<resources>\n")
+        
+        // Primary Colors
+        sb.append("    <!-- Primary Colors -->\n")
+        sb.append("    <color name=\"kamitsubata_droplet\">${Primary.KAMITSUBATA_DROPLET}</color>\n")
+        sb.append("    <color name=\"adora\">${Primary.ADORA}</color>\n\n")
+        
+        // Grizzly Red
+        sb.append("    <!-- Grizzly Red -->\n")
+        sb.append("    <color name=\"grizzly_red_100\">${GrizzlyRed.SHADE_100}</color>\n")
+        sb.append("    <color name=\"grizzly_red_200\">${GrizzlyRed.SHADE_200}</color>\n")
+        sb.append("    <color name=\"grizzly_red_300\">${GrizzlyRed.SHADE_300}</color>\n")
+        sb.append("    <color name=\"grizzly_red_400\">${GrizzlyRed.SHADE_400}</color>\n\n")
+        
+        // Crème Feathers
+        sb.append("    <!-- Crème Feathers -->\n")
+        sb.append("    <color name=\"creme_feathers_100\">${CremeFeathers.SHADE_100}</color>\n")
+        sb.append("    <color name=\"creme_feathers_200\">${CremeFeathers.SHADE_200}</color>\n")
+        sb.append("    <color name=\"creme_feathers_300\">${CremeFeathers.SHADE_300}</color>\n")
+        sb.append("    <color name=\"creme_feathers_500\">${CremeFeathers.SHADE_500}</color>\n\n")
+        
+        // Calabrese Pink
+        sb.append("    <!-- Calabrese Pink -->\n")
+        sb.append("    <color name=\"calabrese_pink_100\">${CalabresePink.SHADE_100}</color>\n")
+        sb.append("    <color name=\"calabrese_pink_200\">${CalabresePink.SHADE_200}</color>\n")
+        sb.append("    <color name=\"calabrese_pink_300\">${CalabresePink.SHADE_300}</color>\n")
+        sb.append("    <color name=\"calabrese_pink_500\">${CalabresePink.SHADE_500}</color>\n\n")
+        
+        // Pale Blue
+        sb.append("    <!-- Pale Blue -->\n")
+        sb.append("    <color name=\"pale_blue_100\">${PaleBlue.SHADE_100}</color>\n")
+        sb.append("    <color name=\"pale_blue_200\">${PaleBlue.SHADE_200}</color>\n")
+        sb.append("    <color name=\"pale_blue_300\">${PaleBlue.SHADE_300}</color>\n")
+        sb.append("    <color name=\"pale_blue_400\">${PaleBlue.SHADE_400}</color>\n\n")
+        
+        // Neutrals
+        sb.append("    <!-- Neutrals & Accents -->\n")
+        sb.append("    <color name=\"cream\">${Neutral.CREAM}</color>\n")
+        sb.append("    <color name=\"twilight_blue\">${Neutral.TWILIGHT_BLUE}</color>\n")
+        sb.append("    <color name=\"green\">${Neutral.GREEN}</color>\n")
+        sb.append("    <color name=\"slate_black\">${Neutral.SLATE_BLACK}</color>\n\n")
+        
+        // Semantic Colors
+        sb.append("    <!-- Semantic Colors -->\n")
+        sb.append("    <color name=\"primary\">@color/kamitsubata_droplet</color>\n")
+        sb.append("    <color name=\"secondary\">@color/adora</color>\n")
+        sb.append("    <color name=\"success\">@color/green</color>\n")
+        sb.append("    <color name=\"warning\">@color/creme_feathers_500</color>\n")
+        sb.append("    <color name=\"error\">@color/calabrese_pink_500</color>\n")
+        sb.append("    <color name=\"info\">@color/pale_blue_300</color>\n")
+        sb.append("    <color name=\"dark\">@color/slate_black</color>\n")
+        
+        sb.append("</resources>")
+        
+        return sb.toString()
+    }
+    
+    /**
+     * Get theme-aware color from resources
+     */
+    fun getThemeColor(context: Context, lightColorResId: Int, darkColorResId: Int): Int {
+        return if (isNightMode(context)) {
+            ContextCompat.getColor(context, darkColorResId)
+        } else {
+            ContextCompat.getColor(context, lightColorResId)
+        }
+    }
+    
+    /**
+     * Check if device is in night mode
+     */
+    private fun isNightMode(context: Context): Boolean {
+        return context.resources.configuration.uiMode and 
+                android.content.res.Configuration.UI_MODE_NIGHT_MASK == 
+                android.content.res.Configuration.UI_MODE_NIGHT_YES
+    }
+}
+
+**Web CSS**
+
+/**
+ * ARKO Design System - Color Tokens
+ * CSS implementation of color tokens for web applications
+ */
+
+:root {
+  /* Primary Colors */
+  --color-kamitsubata-droplet: #3B5998;
+  --color-adora: #8974A3;
+  
+  /* Grizzly Red */
+  --color-grizzly-red-100: #BE8383;
+  --color-grizzly-red-200: #9F5E5E;
+  --color-grizzly-red-300: #7F3434;
+  --color-grizzly-red-400: #5F2424;
+  
+  /* Crème Feathers */
+  --color-creme-feathers-100: #FFFDE0;
+  --color-creme-feathers-200: #FFFCB8;
+  --color-creme-feathers-300: #FFFA8E;
+  --color-creme-feathers-500: #FFFD5A;
+  
+  /* Calabrese Pink */
+  --color-calabrese-pink-100: #FFD6D6;
+  --color-calabrese-pink-200: #FFB0B0;
+  --color-calabrese-pink-300: #FF8989;
+  --color-calabrese-pink-500: #F66363;
+  
+  /* Pale Blue */
+  --color-pale-blue-100: #D9E1FF;
+  --color-pale-blue-200: #B4C4FF;
+  --color-pale-blue-300: #8EA8FF;
+  --color-pale-blue-400: #6A89FF;
+  
+  /* Neutrals & Accents */
+  --color-cream: #FFFEE6;
+  --color-twilight-blue: #3F3FA7;
+  --color-green: #4B6B32;
+  --color-slate-black: #262423;
+  
+  /* Semantic Colors */
+  --color-primary: var(--color-kamitsubata-droplet);
+  --color-secondary: var(--color-adora);
+  --color-success: var(--color-green);
+  --color-warning: var(--color-creme-feathers-500);
+  --color-error: var(--color-calabrese-pink-500);
+  --color-info: var(--color-pale-blue-300);
+  --color-dark: var(--color-slate-black);
+  
+  /* Light Mode Specific */
+  --color-background-primary: #FFFFFF;
+  --color-background-secondary: var(--color-cream);
+  --color-background-tertiary: var(--color-pale-blue-100);
+  --color-text-primary: var(--color-slate-black);
+  --color-text-secondary: rgba(60, 60, 67, 0.6);
+  --color-text-tertiary: rgba(60, 60, 67, 0.3);
+  --color-border: rgba(60, 60, 67, 0.1);
+}
+
+/* Dark Mode Colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-primary: var(--color-slate-black);
+    --color-background-secondary: #1C1C1E;
+    --color-background-tertiary: #2C2C2E;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: rgba(235, 235, 245, 0.6);
+    --color-text-tertiary: rgba(235, 235, 245, 0.3);
+    --color-border: rgba(235, 235, 245, 0.1);
+  }
+}
+
+/* Color Utility Classes */
+
+/* Text Color Classes */
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-error { color: var(--color-error); }
+.text-info { color: var(--color-info); }
+.text-dark { color: var(--color-dark); }
+
+/* Background Color Classes */
+.bg-kamitsubata-droplet { background-color: var(--color-kamitsubata-droplet); }
+.bg-adora { background-color: var(--color-adora); }
+
+/* Grizzly Red Backgrounds */
+.bg-grizzly-red-100 { background-color: var(--color-grizzly-red-100); }
+.bg-grizzly-red-200 { background-color: var(--color-grizzly-red-200); }
+.bg-grizzly-red-300 { background-color: var(--color-grizzly-red-300); }
+.bg-grizzly-red-400 { background-color: var(--color-grizzly-red-400); }
+
+/* Crème Feathers Backgrounds */
+.bg-creme-feathers-100 { background-color: var(--color-creme-feathers-100); }
+.bg-creme-feathers-200 { background-color: var(--color-creme-feathers-200); }
+.bg-creme-feathers-300 { background-color: var(--color-creme-feathers-300); }
+.bg-creme-feathers-500 { background-color: var(--color-creme-feathers-500); }
+
+/* Calabrese Pink Backgrounds */
+.bg-calabrese-pink-100 { background-color: var(--color-calabrese-pink-100); }
+.bg-calabrese-pink-200 { background-color: var(--color-calabrese-pink-200); }
+.bg-calabrese-pink-300 { background-color: var(--color-calabrese-pink-300); }
+.bg-calabrese-pink-500 { background-color: var(--color-calabrese-pink-500); }
+
+/* Pale Blue Backgrounds */
+.bg-pale-blue-100 { background-color: var(--color-pale-blue-100); }
+.bg-pale-blue-200 { background-color: var(--color-pale-blue-200); }
+.bg-pale-blue-300 { background-color: var(--color-pale-blue-300); }
+.bg-pale-blue-400 { background-color: var(--color-pale-blue-400); }
+
+/* Neutral Backgrounds */
+.bg-cream { background-color: var(--color-cream); }
+.bg-twilight-blue { background-color: var(--color-twilight-blue); }
+.bg-green { background-color: var(--color-green); }
+.bg-slate-black { background-color: var(--color-slate-black); }
+
+/* Semantic Background Colors */
+.bg-primary { background-color: var(--color-primary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-success { background-color: var(--color-success); }
+.bg-warning { background-color: var(--color-warning); }
+.bg-error { background-color: var(--color-error); }
+.bg-info { background-color: var(--color-info); }
+.bg-dark { background-color: var(--color-dark); }
+
+/* Border Color Classes */
+.border-primary { border-color: var(--color-primary); }
+.border-secondary { border-color: var(--color-secondary); }
+.border-success { border-color: var(--color-success); }
+.border-warning { border-color: var(--color-warning); }
+.border-error { border-color: var(--color-error); }
+.border-info { border-color: var(--color-info); }
+.border-dark { border-color: var(--color-dark); }
+
+**JavaScript**
+
+/**
+ * ARKO Design System - Color Tokens
+ * JavaScript implementation of color tokens for web applications
+ */
+
+const ARKOColorTokens = {
+  // Primary Colors
+  primary: {
+    kamitsubataDroplet: '#3B5998',
+    adora: '#8974A3'
+  },
+  
+  // Grizzly Red
+  grizzlyRed: {
+    shade100: '#BE8383',
+    shade200: '#9F5E5E',
+    shade300: '#7F3434',
+    shade400: '#5F2424'
+  },
+  
+  // Crème Feathers
+  cremeFeathers: {
+    shade100: '#FFFDE0',
+    shade200: '#FFFCB8',
+    shade300: '#FFFA8E',
+    shade500: '#FFFD5A'
+  },
+  
+  // Calabrese Pink
+  calabresePink: {
+    shade100: '#FFD6D6',
+    shade200: '#FFB0B0',
+    shade300: '#FF8989',
+    shade500: '#F66363'
+  },
+  
+  // Pale Blue
+  paleBlue: {
+    shade100: '#D9E1FF',
+    shade200: '#B4C4FF',
+    shade300: '#8EA8FF',
+    shade400: '#6A89FF'
+  },
+  
+  // Neutrals & Accents
+  neutral: {
+    cream: '#FFFEE6',
+    twilightBlue: '#3F3FA7',
+    green: '#4B6B32',
+    slateBlack: '#262423'
+  },
+  
+  // Semantic Colors
+  semantic: {
+    primary: '#3B5998',    // kamitsubataDroplet
+    secondary: '#8974A3',  // adora
+    success: '#4B6B32',    // green
+    warning: '#FFFD5A',    // cremeFeathers.shade500
+    error: '#F66363',      // calabresePink.shade500
+    info: '#8EA8FF',       // paleBlue.shade300
+    dark: '#262423'        // slateBlack
+  },
+  
+  // Light Mode Colors
+  light: {
+    backgroundPrimary: '#FFFFFF',
+    backgroundSecondary: '#FFFEE6',  // cream
+    backgroundTertiary: '#D9E1FF',   // paleBlue.shade100
+    textPrimary: '#262423',          // slateBlack
+    textSecondary: 'rgba(60, 60, 67, 0.6)',
+    textTertiary: 'rgba(60, 60, 67, 0.3)',
+    border: 'rgba(60, 60, 67, 0.1)'
+  },
+  
+  // Dark Mode Colors
+  dark: {
+    backgroundPrimary: '#262423',    // slateBlack
+    backgroundSecondary: '#1C1C1E',
+    backgroundTertiary: '#2C2C2E',
+    textPrimary: '#FFFFFF',
+    textSecondary: 'rgba(235, 235, 245, 0.6)',
+    textTertiary: 'rgba(235, 235, 245, 0.3)',
+    border: 'rgba(235, 235, 245, 0.1)'
+  },
+  
+  /**
+   * Get the appropriate mode-based colors based on system preference
+   * @returns {Object} Theme-appropriate colors
+   */
+  getThemeColors() {
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return isDarkMode ? this.dark : this.light;
+  },
+  
+  /**
+   * Convert a hex color to RGB values
+   * @param {string} hex Hexadecimal color string
+   * @returns {Object} RGB values as {r, g, b}
+   */
+  hexToRgb(hex) {
+    // Remove # if present
+    hex = hex.replace(/^#/, '');
+    
+    // Parse hex values
+    let r, g, b;
+    if (hex.length === 3) {
+      r = parseInt(hex.charAt(0) + hex.charAt(0), 16);
+      g = parseInt(hex.charAt(1) + hex.charAt(1), 16);
+      b = parseInt(hex.charAt(2) + hex.charAt(2), 16);
+    } else {
+      r = parseInt(hex.substring(0, 2), 16);
+      g = parseInt(hex.substring(2, 4), 16);
+      b = parseInt(hex.substring(4, 6), 16);
+    }
+    
+    return { r, g, b };
+  },
+  
+  /**
+   * Add alpha transparency to a color
+   * @param {string} hex Hexadecimal color
+   * @param {number} alpha Alpha value (0-1)
+   * @returns {string} RGBA color string
+   */
+  addAlpha(hex, alpha) {
+    const rgb = this.hexToRgb(hex);
+    return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
+  },
+  
+  /**
+   * Generate CSS variables for the color system
+   * @returns {string} CSS variables string
+   */
+  generateCSSVariables() {
+    let cssVars = ':root {\n';
+    
+    // Primary Colors
+    Object.entries(this.primary).forEach(([key, value]) => {
+      cssVars += `  --color-${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value};\n`;
+    

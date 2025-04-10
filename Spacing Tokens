@@ -1,0 +1,484 @@
+**Spacing** 
+
+# Spacing System Implementation Across Platforms
+
+## iOS (Swift/SwiftUI)
+
+### UIKit Constants
+```swift
+// Spacing constants
+struct Spacing {
+    static let none: CGFloat = 2    // #0
+    static let xxs: CGFloat = 4     // #1  
+    static let xs: CGFloat = 8      // #2
+    static let s: CGFloat = 12      // #3
+    static let m: CGFloat = 16      // #4
+    static let l: CGFloat = 20      // #5
+    static let xl: CGFloat = 24     // #6
+    static let xxl: CGFloat = 32    // #7
+    static let xxxl: CGFloat = 40   // #8
+    static let xxxxl: CGFloat = 48  // #9
+    static let max: CGFloat = 56    // #10
+}
+
+// Usage example
+let view = UIView()
+view.layoutMargins = UIEdgeInsets(
+    top: Spacing.m,
+    left: Spacing.m,
+    bottom: Spacing.m,
+    right: Spacing.m
+)
+
+// For stack views
+let stackView = UIStackView()
+stackView.spacing = Spacing.s
+```
+
+### SwiftUI
+```swift
+// Spacing constants
+extension CGFloat {
+    static let spacing0: Self = 2   // #0
+    static let spacing1: Self = 4   // #1
+    static let spacing2: Self = 8   // #2
+    static let spacing3: Self = 12  // #3
+    static let spacing4: Self = 16  // #4
+    static let spacing5: Self = 20  // #5
+    static let spacing6: Self = 24  // #6
+    static let spacing7: Self = 32  // #7
+    static let spacing8: Self = 40  // #8
+    static let spacing9: Self = 48  // #9
+    static let spacing10: Self = 56 // #10
+}
+
+// Usage example
+VStack(spacing: .spacing3) {
+    Text("Hello")
+    Text("World")
+}
+.padding(.spacing4)
+```
+
+## Android
+
+### Dimensions Resource File
+```xml
+<!-- res/values/dimens.xml -->
+<resources>
+    <!-- Spacing scale -->
+    <dimen name="spacing_0">2dp</dimen>
+    <dimen name="spacing_1">4dp</dimen>
+    <dimen name="spacing_2">8dp</dimen>
+    <dimen name="spacing_3">12dp</dimen>
+    <dimen name="spacing_4">16dp</dimen>
+    <dimen name="spacing_5">20dp</dimen>
+    <dimen name="spacing_6">24dp</dimen>
+    <dimen name="spacing_7">32dp</dimen>
+    <dimen name="spacing_8">40dp</dimen>
+    <dimen name="spacing_9">48dp</dimen>
+    <dimen name="spacing_10">56dp</dimen>
+</resources>
+```
+
+### XML Layout Usage
+```xml
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_4">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_2"
+        android:text="Hello" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="World" />
+</LinearLayout>
+```
+
+### Kotlin Object
+```kotlin
+object Spacing {
+    val spacing0 = 2.dp
+    val spacing1 = 4.dp
+    val spacing2 = 8.dp
+    val spacing3 = 12.dp
+    val spacing4 = 16.dp
+    val spacing5 = 20.dp
+    val spacing6 = 24.dp
+    val spacing7 = 32.dp
+    val spacing8 = 40.dp
+    val spacing9 = 48.dp
+    val spacing10 = 56.dp
+}
+
+// Usage in code
+view.setPadding(
+    Spacing.spacing4.toPx().toInt(),
+    Spacing.spacing4.toPx().toInt(),
+    Spacing.spacing4.toPx().toInt(),
+    Spacing.spacing4.toPx().toInt()
+)
+```
+
+### Jetpack Compose
+```kotlin
+object Spacing {
+    val spacing0 = 2.dp
+    val spacing1 = 4.dp
+    val spacing2 = 8.dp
+    val spacing3 = 12.dp
+    val spacing4 = 16.dp
+    val spacing5 = 20.dp
+    val spacing6 = 24.dp
+    val spacing7 = 32.dp
+    val spacing8 = 40.dp
+    val spacing9 = 48.dp
+    val spacing10 = 56.dp
+}
+
+// Usage in Compose
+Column(
+    modifier = Modifier.padding(Spacing.spacing4),
+    verticalArrangement = Arrangement.spacedBy(Spacing.spacing2)
+) {
+    Text("Hello")
+    Text("World")
+}
+```
+
+## HTML/CSS
+
+### CSS Custom Properties
+```css
+:root {
+  /* Spacing scale */
+  --spacing-0: 2px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 32px;
+  --spacing-8: 40px;
+  --spacing-9: 48px;
+  --spacing-10: 56px;
+}
+
+/* Usage example */
+.card {
+  padding: var(--spacing-4);
+  margin-bottom: var(--spacing-5);
+}
+
+.card__title {
+  margin-bottom: var(--spacing-2);
+}
+
+/* Utility classes */
+.m-0 { margin: var(--spacing-0); }
+.m-1 { margin: var(--spacing-1); }
+.m-2 { margin: var(--spacing-2); }
+/* ... and so on */
+
+.p-0 { padding: var(--spacing-0); }
+.p-1 { padding: var(--spacing-1); }
+.p-2 { padding: var(--spacing-2); }
+/* ... and so on */
+
+.gap-0 { gap: var(--spacing-0); }
+.gap-1 { gap: var(--spacing-1); }
+.gap-2 { gap: var(--spacing-2); }
+/* ... and so on */
+```
+
+### SCSS Variables and Mixins
+```scss
+// Spacing scale
+$spacing: (
+  "0": 2px,
+  "1": 4px,
+  "2": 8px,
+  "3": 12px,
+  "4": 16px,
+  "5": 20px,
+  "6": 24px,
+  "7": 32px,
+  "8": 40px,
+  "9": 48px,
+  "10": 56px
+);
+
+// Generate spacing utility classes
+@each $key, $value in $spacing {
+  .m-#{$key} { margin: $value; }
+  .mt-#{$key} { margin-top: $value; }
+  .mr-#{$key} { margin-right: $value; }
+  .mb-#{$key} { margin-bottom: $value; }
+  .ml-#{$key} { margin-left: $value; }
+  
+  .p-#{$key} { padding: $value; }
+  .pt-#{$key} { padding-top: $value; }
+  .pr-#{$key} { padding-right: $value; }
+  .pb-#{$key} { padding-bottom: $value; }
+  .pl-#{$key} { padding-left: $value; }
+  
+  .gap-#{$key} { gap: $value; }
+}
+
+// Usage in SCSS
+.card {
+  padding: map-get($spacing, "4");
+  margin-bottom: map-get($spacing, "5");
+}
+```
+
+## Web Frameworks
+
+### React with Styled System
+```jsx
+// theme.js
+const theme = {
+  space: [
+    2,    // #0
+    4,    // #1
+    8,    // #2
+    12,   // #3
+    16,   // #4
+    20,   // #5
+    24,   // #6
+    32,   // #7
+    40,   // #8
+    48,   // #9
+    56    // #10
+  ]
+};
+
+// Usage with styled-system
+import { space, layout } from 'styled-system';
+import styled from 'styled-components';
+
+const Box = styled.div`
+  ${space}
+  ${layout}
+`;
+
+// Example
+function Component() {
+  return (
+    <Box 
+      p={4}          // padding: 16px
+      mb={5}         // margin-bottom: 20px
+      mt={[2, 3, 4]} // responsive margin-top
+    >
+      Content
+    </Box>
+  );
+}
+```
+
+### Tailwind CSS Configuration
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      spacing: {
+        '0': '2px',   // #0
+        '1': '4px',   // #1
+        '2': '8px',   // #2
+        '3': '12px',  // #3
+        '4': '16px',  // #4
+        '5': '20px',  // #5
+        '6': '24px',  // #6
+        '7': '32px',  // #7
+        '8': '40px',  // #8
+        '9': '48px',  // #9
+        '10': '56px', // #10
+      },
+    },
+  },
+};
+
+// Usage in JSX with Tailwind
+function Component() {
+  return (
+    <div className="p-4 mb-5">
+      <h2 className="mb-2">Title</h2>
+      <p>Content</p>
+    </div>
+  );
+}
+```
+
+### Material-UI Theme
+```jsx
+// theme.js
+import { createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  spacing: (factor) => {
+    const spacingValues = [2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56];
+    return `${spacingValues[factor]}px`;
+  },
+});
+
+// Usage in components
+import { Box, Stack } from '@mui/material';
+
+function Component() {
+  return (
+    <Box p={4} mb={5}>
+      <Stack spacing={2}>
+        <div>Item 1</div>
+        <div>Item 2</div>
+      </Stack>
+    </Box>
+  );
+}
+```
+
+## Flutter (Bonus)
+```dart
+// spacing_values.dart
+class Spacing {
+  static const double spacing0 = 2;   // #0
+  static const double spacing1 = 4;   // #1
+  static const double spacing2 = 8;   // #2
+  static const double spacing3 = 12;  // #3
+  static const double spacing4 = 16;  // #4
+  static const double spacing5 = 20;  // #5
+  static const double spacing6 = 24;  // #6
+  static const double spacing7 = 32;  // #7
+  static const double spacing8 = 40;  // #8
+  static const double spacing9 = 48;  // #9
+  static const double spacing10 = 56; // #10
+}
+
+// Usage example
+Widget build(BuildContext context) {
+  return Padding(
+    padding: EdgeInsets.all(Spacing.spacing4),
+    child: Column(
+      children: [
+        Text("Hello"),
+        SizedBox(height: Spacing.spacing2),
+        Text("World"),
+      ],
+    ),
+  );
+}
+```
+
+## Native JavaScript
+```javascript
+// spacing.js
+const SPACING = {
+  0: '2px',
+  1: '4px',
+  2: '8px',
+  3: '12px',
+  4: '16px',
+  5: '20px',
+  6: '24px',
+  7: '32px',
+  8: '40px',
+  9: '48px',
+  10: '56px'
+};
+
+// Usage in vanilla JS
+document.getElementById('my-element').style.padding = SPACING[4];
+document.getElementById('my-element').style.marginBottom = SPACING[5];
+```
+
+## Design System Documentation
+
+### HTML/CSS Visualization
+```html
+<div class="spacing-documentation">
+  <h2>Spacing Scale</h2>
+  <div class="spacing-scale">
+    <div class="spacing-item">
+      <div class="spacing-visual" style="width: 2px; height: 24px;"></div>
+      <div class="spacing-label">#0 (2px)</div>
+    </div>
+    <div class="spacing-item">
+      <div class="spacing-visual" style="width: 4px; height: 24px;"></div>
+      <div class="spacing-label">#1 (4px)</div>
+    </div>
+    <div class="spacing-item">
+      <div class="spacing-visual" style="width: 8px; height: 24px;"></div>
+      <div class="spacing-label">#2 (8px)</div>
+    </div>
+    <div class="spacing-item">
+      <div class="spacing-visual" style="width: 12px; height: 24px;"></div>
+      <div class="spacing-label">#3 (12px)</div>
+    </div>
+    <div class="spacing-item">
+      <div class="spacing-visual" style="width: 16px; height: 24px;"></div>
+      <div class="spacing-label">#4 (16px)</div>
+    </div>
+    <div class="spacing-item">
+      <div class="spacing-visual" style="width: 20px; height: 24px;"></div>
+      <div class="spacing-label">#5 (20px)</div>
+    </div>
+    <div class="spacing-item">
+      <div class="spacing-visual" style="width: 24px; height: 24px;"></div>
+      <div class="spacing-label">#6 (24px)</div>
+    </div>
+    <div class="spacing-item">
+      <div class="spacing-visual" style="width: 32px; height: 24px;"></div>
+      <div class="spacing-label">#7 (32px)</div>
+    </div>
+    <div class="spacing-item">
+      <div class="spacing-visual" style="width: 40px; height: 24px;"></div>
+      <div class="spacing-label">#8 (40px)</div>
+    </div>
+    <div class="spacing-item">
+      <div class="spacing-visual" style="width: 48px; height: 24px;"></div>
+      <div class="spacing-label">#9 (48px)</div>
+    </div>
+    <div class="spacing-item">
+      <div class="spacing-visual" style="width: 56px; height: 24px;"></div>
+      <div class="spacing-label">#10 (56px)</div>
+    </div>
+  </div>
+</div>
+
+<style>
+.spacing-documentation {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 24px;
+}
+
+.spacing-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.spacing-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.spacing-visual {
+  background-color: #a855f7;
+  border-radius: 2px;
+}
+
+.spacing-label {
+  font-size: 14px;
+  color: #333;
+}
+</style>
+```
